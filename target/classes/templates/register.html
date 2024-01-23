@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Client</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+                        <div class="login-form">
+                            <form th:action="@{/users/register}" th:object="${userForm}" method="post">
+                                <div class="form-group">
+                                    <label>Prenom</label>
+                                    <input class="au-input au-input--full" type="text" name="firstname" th:field="*{firstName}"placeholder="Firstname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Nom</label>
+                                    <input class="au-input au-input--full" type="text" name="lastname" th:field="*{lastName}"placeholder="LastName">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="au-input au-input--full" type="text" name="username" th:field="*{username}"placeholder="UserName">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="au-input au-input--full" type="text" name="password" th:field="*{password}"placeholder="password">
+                                </div>
+                                
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                               
+                            </form>
+                            
+                       </div>
+</body>
+</html>

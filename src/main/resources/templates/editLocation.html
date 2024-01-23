@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Location</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(239, 239, 239);">
+
+    <div class="container-fluid">
+
+        <section class="section">
+            <div class="row">
+
+               <div class="col-lg-6 mx-auto d-flex justify-content-center mt-4 mb-8">
+
+                    <div class="card" style="width: 30rem; height: 600px;">
+                        <div class="card-body">
+
+                            <h5 style="text-align: center;" class="card-title">Modifier la location</h5>
+
+                            <a class="btnBack" href="/locations">Back</a>
+
+                            <hr>
+
+                            <form class="form-horizontal" th:action="@{/locations/edit/{id}(id=${locationForm.id})}" th:object="${locationForm}" method="post">
+
+
+                                
+                                <!-- <input type="hidden" th:field="*{id}" /> -->
+
+                                <!-- dateDebut-->
+                                <div class="form-group">
+                                    <label for="dateDebut">Date de début</label>  
+                                    <input id="dateDebut" name="dateDebut" placeholder="dateDebut" th:field="*{dateDebut}" class="form-control" required="" type="date">
+                                </div>   
+              
+                                <!-- dateFin -->
+                                <div class="form-group">
+                                    <label for="dateFin">Date de fin</label>  
+                                    <input id="dateFin" name="dateFin" placeholder="dateFin"  th:field="*{dateFin}" class="form-control" required type="date">
+                                </div>
+
+                                <!-- Select client-->
+                                <div class="form-group">
+                                    <label for="client">Client</label>
+                                    <select id="client" name="client.id" class="form-control" th:field="*{client.id}">
+                                        <option th:each="client: ${clients}" th:value="${client.id}" th:text="${client.cin}"></option>
+                                    </select>
+                                </div>
+                                            
+                                <!-- Select Voiture -->
+                                <div class="form-group">
+                                    <label for="voiture">Voiture</label>
+                                    <select id="voiture" name="voiture.id" class="form-control" th:field="*{voiture.id}">
+                                        <option th:each="voiture: ${voitures}" th:value="${voiture.id}" th:text="${voiture.imatriculation}"></option>
+                                    </select>
+                                </div>
+                                
+                                <!-- Type Garantie-->
+                                <div class="form-group">
+                                    <label for="typeGarantie">Types des garanties</label>
+                                    <select id="typeGarantie" th:field="*{typeGarantie}" class="form-control" aria-label="Large select example">
+                                        <option value="" selected>Choisir un type de garantie</option>
+                                        <option th:value="1">Garantie responsabilité civile</option>
+                                        <option th:value="2">Garantie dommages collision</option>
+                                        <option th:value="3">Garantie vol et incendie</option>
+                                        <option th:value="4">Garantie bris de glace</option>
+                                        <option th:value="5">Garantie protection des passagers</option>
+                                    </select>
+                                </div>
+                                  
+                                <!-- Montant Garantie-->
+                                <div class="form-group">
+                                    <label  for="MontantGarantie">Montant de Garantie</label>  
+                                    <input id="MontantGarantie" name="MontantGarantie" th:field="*{MontantGarantie}" placeholder="0.0 d" class="form-control input-md" required="" type="text">
+                                </div>
+
+                                <!-- Frais Location-->
+                                <div class="form-group">
+                                    <label for="FraisLocation">Frais de Location</label>  
+                                    <input id="FraisLocation" name="FraisLocation" th:field="*{FraisLocation}" placeholder="0.0 d" class="form-control input-md" required type="text">
+                                </div>
+              
+                                <!-- Mode de paiement-->
+                                <div class="form-group">
+                                    <label for="ModePaiement">Mode de paiement</label>
+                                    <select id="ModePaiement" th:field="*{ModePaiement}" class="form-control" aria-label="Large select example">
+                                        <option value="" selected>Choisir un mode de paiement</option>
+                                        <option th:value="1">Espèce</option>
+                                        <option th:value="2">Chèque</option>
+                                    </select>
+                                </div>
+        
+                                <button type="submit" class="btn btn-primary">Mettre à jour</button>
+                            </form>
+
+                        </div> 
+
+                    </div>
+                
+               </div> 
+
+            </div>
+        </section>
+
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
